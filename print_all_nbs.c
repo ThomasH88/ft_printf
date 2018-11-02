@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:47:45 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 19:11:30 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/01 19:40:15 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void				print_signed(long long nb, int *count)
 	putchar_printf(nb % 10 + '0', count);
 }
 
-void				print_unsigned(unsigned long long nb, int base, t_params *params, int *count)
+void				print_unsigned(unsigned long long nb, unsigned long long base, t_params *params, int *count)
 {
 	if (nb >= base)
 		print_unsigned(nb / base, base, params, count);

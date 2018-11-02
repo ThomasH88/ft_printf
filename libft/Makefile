@@ -6,7 +6,7 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2018/10/25 21:02:48 by tholzheu         ###   ########.fr        #
+#    Updated: 2018/11/01 19:28:25 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,18 +83,15 @@ SRCS = ft_memset.c \
 SRCO = $(SRCS:.c=.o)
 
 $(NAME):
-	make -C b_printf/
 	gcc $(FLAGS) $(SRCS) -I=$(HEADER)
 	ar rcs $(NAME) $(SRCO)
 
 all: $(NAME) 
 
 clean:
-	make clean -C b_printf/
 	/bin/rm -f $(SRCO)
 
 fclean: clean
-	make fclean -C b_printf/
 	/bin/rm -rf $(NAME) *.out*
 
 re: fclean all
