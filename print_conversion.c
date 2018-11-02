@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 20:45:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 20:42:45 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 14:33:51 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 static void		handle_other(t_params *params, t_book *book, va_list ap, int *count)
 {
-	/*if (params->type == PW5)*/
-		/*continue ;*/
-		/*//print_ptr(params, book, ap, count);*/
 	if (params->type == PW6)
 		print_str(params, book, ap, count);
 	else if (params->type == PW7)
 		print_char(params, book, ap, count);
+	else if (param_is_on(PW6, &params->lmod))
+		print_special_char(params, book, ap, count);
+	else if (param_is_on(PW7, &params->lmod))
+		print_special_str(params, book, ap, count);
 }
 
 static void		handle_signed(t_params *params, t_book *book, va_list ap, int *count)
@@ -32,10 +33,12 @@ static void		handle_signed(t_params *params, t_book *book, va_list ap, int *coun
 		nb = va_arg(ap, int);
 	else
 		nb = lmod_signed(params, ap);
+	if (nb == 0 && param_is_on(PW5, &params->flags))
+		return ;
 	if (nb < 0)
 		set_params(PW6, &params->flags);
 	len = signed_nb_size(nb);
-	padding_left(params, book, &len, count);
+	padding_left(params, book, len, count);
 	print_signed(nb, count);
 	padding_right(params, book, len, count);
 }
@@ -46,19 +49,28 @@ static void		handle_unsigned(t_params *params, t_book *book, va_list ap, int *co
 	size_t				len;
 	int					base;
 
-	if (params->lmod == 0)
+	if (params->type == PW5)
+	{
+		nb = va_arg(ap, unsigned long);
+		set_params(PW0, &params->flags);
+	}
+	else if (params->lmod == 0)
 		nb = va_arg(ap, unsigned int);
 	else
 		nb = lmod_unsigned(params, ap);
+	if (nb == 0 && param_is_on(PW5, &params->flags))
+		return ;
 	set_unsigned_len_and_base(params, nb, &len, &base);
-	padding_left(params, book, &len, count);
+	padding_left(params, book, len, count);
 	print_unsigned(nb, base, params, count);
 	padding_right(params, book, len, count);
 }
 
 void			print_conv(t_params *params, t_book *book, va_list ap, int *count)
 {
-	if (params->type >= PW5)
+	if (params->type == 0)
+		return ;
+	if (params->type >= PW6 || params->lmod >= PW7)
 		handle_other(params, book, ap, count);
 	else if (params->type == PW0)
 		handle_signed(params, book, ap, count);

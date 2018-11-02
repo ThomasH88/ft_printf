@@ -6,7 +6,7 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2018/11/01 20:43:28 by tholzheu         ###   ########.fr        #
+#    Updated: 2018/11/02 08:13:57 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS = ft_printf.c \
 	   print_all_nbs.c \
 	   print_conversion.c \
 	   print_other.c \
+	   print_special.c \
 	   set_params.c \
 	   unsigned_helpers.c \
 	   minilibft.c \

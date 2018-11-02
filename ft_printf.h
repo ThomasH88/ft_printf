@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:32:44 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 20:40:57 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 14:18:38 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-//# include <stdio.h>//ljaslkdfjklasjdklfjklasjkf
+# include <stdio.h>//ljaslkdfjklasjdklfjklasjkf
 # include <limits.h>
 
 # define PW7 128
@@ -65,6 +65,9 @@ void				putstr_printf(char *s, int *count);
 void				print_char(t_params *params, t_book *book, va_list ap, int *count);
 void				print_str(t_params *params, t_book *book, va_list ap, int *count);
 
+/*print_special*/
+void				print_special_char(t_params *params, t_book *book, va_list ap, int *count);
+void				print_special_str(t_params *params, t_book *book, va_list ap, int *count);
 /*print_all_nbs*/
 void				print_signed(long long nb, int *count);
 void				print_unsigned(unsigned long long nb, unsigned long long base, t_params *params, int *count);
@@ -76,7 +79,7 @@ unsigned long long	lmod_unsigned(t_params *params, va_list ap);
 void				set_unsigned_len_and_base(t_params *params, unsigned long long nb, size_t *len, int *base);
 
 /*padding*/
-void				padding_left(t_params *params, t_book *book, size_t *len, int *count);
+void				padding_left(t_params *params, t_book *book, size_t len, int *count);
 void				padding_right(t_params *params, t_book *book, size_t len, int *count);
 
 /*nb_size*/
@@ -87,6 +90,7 @@ size_t				unsigned_nb_size(unsigned long long nb, unsigned long long base);
 int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 size_t				ft_strlen(const char *s);
+char				*strdup_wchar(wchar_t *s1, size_t *len);
 
 
 #endif

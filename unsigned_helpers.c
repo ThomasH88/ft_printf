@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:27:19 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 16:45:19 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 10:20:27 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		set_unsigned_len_and_base(t_params *params, unsigned long long nb, size_t 
 		*len = unsigned_nb_size(nb, 8);
 		*base = 8;
 	}
-	if (params->type == PW3 || params->type == PW4)
+	if (params->type == PW3 || params->type == PW4 || params->type == PW5)
 	{
 		*len = unsigned_nb_size(nb, 16);
 		*base = 16;

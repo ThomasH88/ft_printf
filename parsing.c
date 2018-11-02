@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 20:11:29 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 21:32:39 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 11:43:07 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static char		*flags_parsing(char *fmt, t_params *params)
 	k = 0;
 	while (*fmt && i)
 	{
-		i = 0;
 		k = 1;
+		i = 0;
 		if (*fmt == '#' && (i = 1))
 			set_params(PW0, &params->flags);
 		else if (*fmt == '0' && (i = 1))
@@ -76,9 +76,12 @@ static char		*type_parsing(char *fmt, t_params *params)
 		set_params(PW5, &params->type);
 	else if (*fmt == 's')
 		set_params(PW6, &params->type);
-	else if (*fmt == 'c')
+	else if (*fmt == 'c' || *fmt == 'C')
 		set_params(PW7, &params->type);
-	fmt++;
+	/*else if (*fmt == 'C')*/
+		/*set_params(PW6, &params->lmod);*/
+	else if (*fmt == 'S')
+		set_params(PW7, &params->lmod);
 	return (fmt);
 }
 
@@ -91,6 +94,7 @@ char			*parsing(char *fmt, t_params *params, t_book *book)
 	   fmt++;
 	if (*fmt && *fmt == '.' && fmt++)
 	{
+		set_params(PW5, &params->flags);
 		unset_params(PW1, &params->flags);
 		book->prec = ft_atoi(fmt);
 	}
@@ -102,6 +106,5 @@ char			*parsing(char *fmt, t_params *params, t_book *book)
 		unset_params(PW1, &params->flags);
 	if (param_is_on(PW4, &params->flags))
 		unset_params(PW3, &params->flags);
-	fmt--;
 	return (fmt);
 }
