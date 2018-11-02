@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 20:11:29 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 19:10:51 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/01 21:32:39 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 static char		*flags_parsing(char *fmt, t_params *params)
 {
 	int		i;
+	int		k;
 
 	i = 1;
-	if (*fmt != '#' && *fmt != '0' && *fmt != '-' && *fmt != ' ' && *fmt != '+')
-	{
-		set_params(PW5, &params->flags);
-		return (fmt);
-	}
+	k = 0;
 	while (*fmt && i)
 	{
 		i = 0;
+		k = 1;
 		if (*fmt == '#' && (i = 1))
 			set_params(PW0, &params->flags);
 		else if (*fmt == '0' && (i = 1))
@@ -37,7 +35,8 @@ static char		*flags_parsing(char *fmt, t_params *params)
 			set_params(PW4, &params->flags);
 		fmt++;
 	}
-	fmt--;
+	if (k)
+		fmt--;
 	return (fmt);
 }
 
