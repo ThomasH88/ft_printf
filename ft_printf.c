@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:30:39 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 19:11:42 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/01 20:42:32 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void		ft_cases(char *fmt, int *count, va_list ap)
 	while (*fmt)
 	{
 		if (*fmt == '%' && *(fmt + 1) == '%' && fmt++)
-			ft_putchar('%');
+			putchar_printf('%', count);
 			/*ft_putchar_printf('%', count);*/
 		else if (*fmt == '%' && fmt++)
 		{
@@ -31,7 +31,7 @@ static void		ft_cases(char *fmt, int *count, va_list ap)
 			print_conv(params, book, ap, count);
 		}
 		else
-			ft_putchar(*fmt);
+			putchar_printf(*fmt, count);
 			/*ft_putchar_printf(*fmt, count);*/
 		fmt++;
 	}

@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 20:45:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 19:12:12 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/01 20:42:45 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void		handle_other(t_params *params, t_book *book, va_list ap, int *count)
 {
-	if (params->type == PW5)
-		printf("Nothing\n");
-		//print_ptr(params, book, ap, count);
-	else if (params->type == PW6)
+	/*if (params->type == PW5)*/
+		/*continue ;*/
+		/*//print_ptr(params, book, ap, count);*/
+	if (params->type == PW6)
 		print_str(params, book, ap, count);
 	else if (params->type == PW7)
 		print_char(params, book, ap, count);

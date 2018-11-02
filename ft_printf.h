@@ -6,18 +6,17 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:32:44 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/01 19:41:24 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/01 20:40:57 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <stdio.h>//ljaslkdfjklasjdklfjklasjkf
+//# include <stdio.h>//ljaslkdfjklasjdklfjklasjkf
 # include <limits.h>
 
 # define PW7 128
@@ -84,7 +83,10 @@ void				padding_right(t_params *params, t_book *book, size_t len, int *count);
 size_t				signed_nb_size(long long nb);
 size_t				unsigned_nb_size(unsigned long long nb, unsigned long long base);
 
-
+/*minilibft*/
+int					ft_atoi(const char *str);
+int					ft_isdigit(int c);
+size_t				ft_strlen(const char *s);
 
 
 #endif

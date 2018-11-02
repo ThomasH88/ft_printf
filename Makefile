@@ -6,17 +6,13 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2018/11/01 19:48:28 by tholzheu         ###   ########.fr        #
+#    Updated: 2018/11/01 20:43:28 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-NAME2 = libft/libft.a
-
 HEADER = ft_printf.h
-
-HEADER2 = libft/libft.h
 
 FLAGS = -Wall -Werror -Wextra -c
 
@@ -32,28 +28,26 @@ SRCS = ft_printf.c \
 	   print_other.c \
 	   set_params.c \
 	   unsigned_helpers.c \
+	   minilibft.c \
 
 SRCO = $(SRCS:.c=.o)
 
 $(NAME):
-	make -C libft
 	gcc $(FLAGS) $(SRCS) -I=$(HEADER)
 	ar rcs $(NAME) $(SRCO)
 
 all: $(NAME) 
 
 run: re
-	gcc main.c print_bits.c $(NAME) $(NAME2) -I $(HEADER2)
+	gcc main.c print_bits.c $(NAME)
 
 san: fclean
-	gcc $(DEBUG) $(SRCS) main.c print_bits.c -I $(HEADER2)
+	gcc $(DEBUG) $(SRCS) main.c print_bits.c
 
 clean:
-	make clean -C libft
 	/bin/rm -f $(SRCO)
 
 fclean: clean
-	make fclean -C libft
 	/bin/rm -rf $(NAME) *.out* *.dSYM
 
 re: fclean all

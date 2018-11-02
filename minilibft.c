@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   minilibft.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/09/17 20:05:29 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/09 16:09:36 by tholzheu         ###   ########.fr       */
+/*   Created: 2018/11/01 20:34:43 by tholzheu          #+#    #+#             */
+/*   Updated: 2018/11/01 20:41:01 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 int		ft_atoi(const char *str)
 {
 	int		ans;
 	int		sign;
 
-	if (ft_strlen(str) >= 19 && ft_strcmp(str, "9223372036854775807") > 0)
-		return (-1);
-	if (ft_strlen(str) >= 20 && ft_strcmp(str, "-9223372036854775808") > 0)
-		return (0);
 	sign = 1;
 	ans = 0;
 	if (str)
@@ -36,4 +32,24 @@ int		ft_atoi(const char *str)
 			ans = ans * 10 + (*str++ - '0');
 	}
 	return (sign * ans);
+}
+
+int		ft_isdigit(int c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
+	else
+		return (0);
+}
+
+size_t		ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s && s[i])
+	{
+		i++;
+	}
+	return (i);
 }
