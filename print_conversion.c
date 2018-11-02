@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 20:45:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 14:33:51 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 16:33:36 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void		handle_signed(t_params *params, t_book *book, va_list ap, int *coun
 		nb = va_arg(ap, int);
 	else
 		nb = lmod_signed(params, ap);
-	if (nb == 0 && param_is_on(PW5, &params->flags))
+	if (nb == 0 && param_is_on(PW5, &params->flags) && book->prec == 0)
 		return ;
 	if (nb < 0)
 		set_params(PW6, &params->flags);
@@ -48,7 +48,10 @@ static void		handle_unsigned(t_params *params, t_book *book, va_list ap, int *co
 	unsigned long long	nb;
 	size_t				len;
 	int					base;
+	int					door;
 
+	door = 1;
+	base = 10;
 	if (params->type == PW5)
 	{
 		nb = va_arg(ap, unsigned long);
@@ -58,11 +61,18 @@ static void		handle_unsigned(t_params *params, t_book *book, va_list ap, int *co
 		nb = va_arg(ap, unsigned int);
 	else
 		nb = lmod_unsigned(params, ap);
-	if (nb == 0 && param_is_on(PW5, &params->flags))
-		return ;
-	set_unsigned_len_and_base(params, nb, &len, &base);
+	if (nb == 0 && (params->type == PW3 || params->type == PW4)
+		&& param_is_on(PW5, &params->flags) && book->prec == 0)
+		door = 0;
+	if (nb == 0 && params->type >= PW2 && params->type <= PW4)
+		set_params(PW7, &params->flags);
+	if (param_is_on(PW7, &params->flags) && param_is_on(PW5, &params->flags) && book->prec == 0)
+		len = 0;
+	else
+		set_unsigned_len_and_base(params, nb, &len, &base);
 	padding_left(params, book, len, count);
-	print_unsigned(nb, base, params, count);
+	if (door)
+		print_unsigned(nb, base, params, count);
 	padding_right(params, book, len, count);
 }
 
