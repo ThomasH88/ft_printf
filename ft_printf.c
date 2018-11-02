@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:30:39 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 15:05:50 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 15:23:52 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ static void		ft_cases(char *fmt, int *count, va_list ap)
 			putchar_printf(*fmt, count);
 		fmt++;
 	}
-	/*write(1, "\nFlags\n", 7);*/
-	/*print_bits(params->flags);*/
-	/*write(1, "Lmod\n", 5);*/
-	/*print_bits(params->lmod);*/
-	/*write(1, "Type\n", 5);*/
-	/*print_bits(params->type);*/
-	/*printf("width = %lu\n", book->width);*/
-	/*printf("prec = %lu\n", book->prec);*/
+	write(1, "\nFlags\n", 7);
+	print_bits(params->flags);
+	write(1, "Lmod\n", 5);
+	print_bits(params->lmod);
+	write(1, "Type\n", 5);
+	print_bits(params->type);
+	printf("width = %lu\n", book->width);
+	printf("prec = %lu\n", book->prec);
 	va_end(ap);
 }
 

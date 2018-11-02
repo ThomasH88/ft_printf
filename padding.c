@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 09:17:27 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 15:18:20 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 15:28:50 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,12 @@ static void		print_prefix(t_params *params, t_book *book, int *count)
 		putchar_printf('+', count);
 	else if (param_is_on(PW0, &params->flags) && params->type == PW2)
 		putchar_printf('0', count);
-	else if (param_is_on(PW0, &params->flags) && params->type >= PW3 && params->type <= PW5)
+	else if (param_is_on(PW0, &params->flags) && (params->type == PW3 || params->type == PW5))
+	{
 		putstr_printf("0x", count);
+	}
+	else if (param_is_on(PW0, &params->flags) && params->type == PW4)
+		putstr_printf("0X", count);
 }
 
 void			padding_left(t_params *params, t_book *book, size_t len, int *count)
