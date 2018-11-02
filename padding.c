@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 09:17:27 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 15:04:48 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 15:18:20 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 
 static void		padding_adjustments(t_params *params, t_book *book)
 {
+	/*if ((param_is_on(PW3, &params->flags) || param_is_on(PW4, &params->flags))*/
+		/*&& param_is_on(PW6, &params->flags) && book->width > 0)*/
+		/*book->width--;*/
 	if ((param_is_on(PW3, &params->flags) || param_is_on(PW4, &params->flags))
-		&& param_is_on(PW6, &params->flags) && book->width > 0)
+		&& param_is_on(PW6, &params->flags) == 0 && book->width > 0)
 		book->width--;
 	if (params->flags >= PW6 && book->width > 0)
 		book->width--;
