@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 20:45:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 20:33:24 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:51:54 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void		handle_other(t_params *params, t_book *book, va_list ap, int *count
 		print_str(params, book, ap, count);
 	else if (params->type == PW7 || params->lmod == PW6)
 		print_char(params, book, ap, count);
-	else if (param_is_on(PW7, &params->lmod))
+	else if (param_is_on(PW7, &params->lmod) && param_is_on(PW5, &params->lmod))
 		print_special_str(params, book, ap, count);
 }
 

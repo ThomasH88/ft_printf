@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 20:34:43 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 20:47:57 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:49:18 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ char		*strdup_wchar(wchar_t *s1, size_t *len)
 	*len = 0;
 	while (s1[*len])
 		*len = *len + 1;
-	new = (char *)malloc(sizeof(char) * (*len + 10));
+	new = (char *)malloc(sizeof(char) * (*len + 1));
 	if (!new)
 		return (0);
 	while (s1[i])
