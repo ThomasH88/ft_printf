@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:32:44 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 16:41:14 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 19:28:05 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ void				print_char(t_params *params, t_book *book, va_list ap, int *count);
 void				print_str(t_params *params, t_book *book, va_list ap, int *count);
 
 /*print_special*/
-void				print_special_char(t_params *params, t_book *book, va_list ap, int *count);
 void				print_special_str(t_params *params, t_book *book, va_list ap, int *count);
+
 /*print_all_nbs*/
 void				print_signed(long long nb, int *count);
 void				print_unsigned(unsigned long long nb, unsigned long long base, t_params *params, int *count);
@@ -77,6 +77,7 @@ unsigned long long	lmod_unsigned(t_params *params, va_list ap);
 
 /*unsigned_helpers*/
 void				set_unsigned_len_and_base(t_params *params, unsigned long long nb, size_t *len, int *base);
+int					print_or_nah(t_params *params, t_book *book);
 
 /*padding*/
 void				padding_left(t_params *params, t_book *book, size_t len, int *count);

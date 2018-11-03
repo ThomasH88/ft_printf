@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 09:17:27 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 16:40:12 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 19:49:33 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 static void		padding_adjustments(t_params *params, t_book *book)
 {
-	/*if ((param_is_on(PW3, &params->flags) || param_is_on(PW4, &params->flags))*/
-		/*&& param_is_on(PW6, &params->flags) && book->width > 0)*/
-		/*book->width--;*/
 	if ((param_is_on(PW3, &params->flags) || param_is_on(PW4, &params->flags))
 		&& param_is_on(PW6, &params->flags) == 0 && book->width > 0)
 		book->width--;
@@ -37,7 +34,7 @@ static void		padding_adjustments(t_params *params, t_book *book)
 
 static void		print_prefix(t_params *params, t_book *book, int *count)
 {
-	if (param_is_on(PW3, &params->flags) && params->flags < PW6)
+	if (param_is_on(PW3, &params->flags) && params->flags < PW6 && params->type == PW0)
 	{
 		putchar_printf(' ', count);
 		if (book->width > 0)
@@ -45,7 +42,7 @@ static void		print_prefix(t_params *params, t_book *book, int *count)
 	}
 	if (param_is_on(PW6, &params->flags))
 		putchar_printf('-', count);
-	else if (param_is_on(PW4, &params->flags))
+	else if (param_is_on(PW4, &params->flags) && params->type == PW0)
 		putchar_printf('+', count);
 	else if (!param_is_on(PW7, &params->flags) && param_is_on(PW0, &params->flags) && params->type == PW2)
 		putchar_printf('0', count);
@@ -62,9 +59,10 @@ void			padding_left(t_params *params, t_book *book, size_t len, int *count)
 	size_t	tmp;
 
 	padding_adjustments(params, book);
-	/*printf("width = %lu, len = %lu\n", book->width, len);*/
-	if (param_is_on(PW5, &params->flags) && book->prec == 0 && params->type == PW2)
+	if (param_is_on(PW5, &params->flags) && book->prec == 0
+		&& params->type == PW2 && param_is_on(PW0, &params->flags))
 		len++;
+	/*printf("\nwidth = %lu, len = %lu, prec = %lu\n", book->width, len, book->prec);*/
 	while (!param_is_on(PW2, &params->flags) && book->width > book->prec && book->width > len)
 	{
 		putchar_printf(' ', count);

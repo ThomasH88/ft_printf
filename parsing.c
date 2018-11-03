@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 20:11:29 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 11:43:07 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 19:22:06 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ static char		*type_parsing(char *fmt, t_params *params)
 		set_params(PW6, &params->type);
 	else if (*fmt == 'c' || *fmt == 'C')
 		set_params(PW7, &params->type);
-	/*else if (*fmt == 'C')*/
-		/*set_params(PW6, &params->lmod);*/
+	else if (*fmt == '%')
+		set_params(PW6, &params->lmod);
 	else if (*fmt == 'S')
 		set_params(PW7, &params->lmod);
 	return (fmt);

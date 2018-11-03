@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 21:40:59 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 14:14:56 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 19:36:54 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ void		putstr_printf(char *s, int *count)
 
 void		print_char(t_params *params, t_book *book, va_list ap, int *count)
 {
-	/*if (param_is_on(PW5, &params->flags))*/
 	while (book->width > 1 && !param_is_on(PW2, &params->flags))
 	{
 		putchar_printf(' ', count);
 		book->width--;
 	}
-	putchar_printf(va_arg(ap, int), count);
+	if (params->lmod == PW6)
+		putchar_printf('%', count);
+	else
+		putchar_printf(va_arg(ap, int), count);
 	while (book->width > 1 && param_is_on(PW2, &params->flags))
 	{
 		putchar_printf(' ', count);

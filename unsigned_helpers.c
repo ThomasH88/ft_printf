@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:27:19 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 16:26:01 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 19:38:06 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,15 @@ void		set_unsigned_len_and_base(t_params *params, unsigned long long nb, size_t 
 		*len = unsigned_nb_size(nb, 16);
 		*base = 16;
 	}
+}
+
+int			print_or_nah(t_params *params, t_book *book)
+{
+	if (param_is_on(PW7, &params->flags) && (params->type == PW3 || params->type == PW4)
+		&& param_is_on(PW5, &params->flags) && book->prec == 0)
+		return (0);
+	if (param_is_on(PW7, &params->flags) && param_is_on(PW5, &params->flags)
+		&& book->prec == 0 && params->type == PW2 && !param_is_on(PW0, &params->flags))
+		return (0);
+	return (1);
 }
