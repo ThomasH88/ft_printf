@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:32:44 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 19:28:05 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:46:17 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int					ft_atoi(const char *str);
 int					ft_isdigit(int c);
 size_t				ft_strlen(const char *s);
 char				*strdup_wchar(wchar_t *s1, size_t *len);
+char				*ft_strdup(const char *s1);
 
 
 #endif

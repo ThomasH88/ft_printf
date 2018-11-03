@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 20:34:43 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 20:33:59 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:47:57 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,32 @@ char		*strdup_wchar(wchar_t *s1, size_t *len)
 	*len = 0;
 	while (s1[*len])
 		*len = *len + 1;
-	new = (char *)malloc(sizeof(char) * (*len + 1));
+	new = (char *)malloc(sizeof(char) * (*len + 10));
 	if (!new)
 		return (0);
 	while (s1[i])
 	{
 		new[i] = (char)s1[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
+}
+
+char	*ft_strdup(const char *s1)
+{
+	char	*new;
+	int		i;
+
+	if (!s1)
+		return (NULL);
+	i = 0;
+	new = (char *)malloc(sizeof(char) * ft_strlen(s1) + 1);
+	if (!new)
+		return (0);
+	while (s1[i])
+	{
+		new[i] = s1[i];
 		i++;
 	}
 	new[i] = '\0';
