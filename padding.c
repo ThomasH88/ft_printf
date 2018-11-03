@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 09:17:27 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 19:49:33 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:21:45 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 static void		padding_adjustments(t_params *params, t_book *book)
 {
 	if ((param_is_on(PW3, &params->flags) || param_is_on(PW4, &params->flags))
-		&& param_is_on(PW6, &params->flags) == 0 && book->width > 0)
+		&& param_is_on(PW6, &params->flags) == 0 && book->width > 0 && params->type == PW0)
 		book->width--;
-	if (!param_is_on(PW7, &params->flags) && params->flags >= PW6 && book->width > 0)
+	if (!param_is_on(PW7, &params->flags) && params->flags >= PW6
+		&& params->type == PW0 && book->width > 0)
 		book->width--;
 	if (book->width > book->prec && param_is_on(PW0, &params->flags))
 	{
@@ -40,7 +41,7 @@ static void		print_prefix(t_params *params, t_book *book, int *count)
 		if (book->width > 0)
 			book->width--;
 	}
-	if (param_is_on(PW6, &params->flags))
+	if (param_is_on(PW6, &params->flags) && params->type == PW0)
 		putchar_printf('-', count);
 	else if (param_is_on(PW4, &params->flags) && params->type == PW0)
 		putchar_printf('+', count);

@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/29 20:30:39 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 19:38:00 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:28:40 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ static void		ft_cases(char *fmt, int *count, va_list ap)
 	/*print_bits(params->type);*/
 	/*printf("width = %lu\n", book->width);*/
 	/*printf("prec = %lu\n", book->prec);*/
+	free(params);
+	free(book);
 	va_end(ap);
 }
 

@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 16:47:45 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 15:26:12 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:22:59 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 long long			lmod_signed(t_params *params, va_list ap)
 {
 	if (params->lmod == PW0)
-		return (va_arg(ap, int));
+		return ((signed char)va_arg(ap, int));
 	if (params->lmod == PW1)
-		return (va_arg(ap, int));
+		return ((short)va_arg(ap, int));
 	if (params->lmod == PW2)
 		return (va_arg(ap, long long));
 	if (params->lmod == PW3)
@@ -32,9 +32,11 @@ long long			lmod_signed(t_params *params, va_list ap)
 unsigned long long	lmod_unsigned(t_params *params, va_list ap)
 {
 	if (params->lmod == PW0)
-		return (va_arg(ap, unsigned int));
+		return ((unsigned char)va_arg(ap, unsigned int));
+	if (params->lmod == PW1 && param_is_on(PW6, &params->flags))
+		return (va_arg(ap, unsigned long));
 	if (params->lmod == PW1)
-		return (va_arg(ap, unsigned int));
+		return ((unsigned short)va_arg(ap, unsigned int));
 	if (params->lmod == PW2)
 		return (va_arg(ap, unsigned long long));
 	if (params->lmod == PW3)
@@ -43,6 +45,8 @@ unsigned long long	lmod_unsigned(t_params *params, va_list ap)
 		return (va_arg(ap, uintmax_t));
 	if (params->lmod == PW5)
 		return (va_arg(ap, size_t));
+	if (param_is_on(PW6, &params->flags))
+		return (va_arg(ap, unsigned long));
 	return (0);
 }
 

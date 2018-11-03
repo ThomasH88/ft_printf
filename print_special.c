@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/02 08:05:24 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 19:27:49 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:29:37 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,6 @@ void		print_special_str(t_params *params, t_book *book, va_list ap, int *count)
 		putchar_printf(' ', count);
 		book->width--;
 	}
+	free(str);
+	str = NULL;
 }

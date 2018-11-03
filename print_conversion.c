@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/31 20:45:36 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 19:42:51 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:25:16 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		handle_unsigned(t_params *params, t_book *book, va_list ap, int *co
 		nb = va_arg(ap, unsigned long);
 		set_params(PW0, &params->flags);
 	}
-	else if (params->lmod == 0)
+	else if (params->lmod == 0 && !param_is_on(PW6, &params->flags))
 		nb = va_arg(ap, unsigned int);
 	else
 		nb = lmod_unsigned(params, ap);
@@ -76,7 +76,7 @@ static void		handle_unsigned(t_params *params, t_book *book, va_list ap, int *co
 
 void			print_conv(t_params *params, t_book *book, va_list ap, int *count)
 {
-	if (params->type == 0 && params->lmod < PW6)
+	if (params->type == 0 && params->lmod < PW6 && !param_is_on(PW6, &params->flags))
 		return ;
 	if (params->type >= PW6 || params->lmod >= PW6)
 		handle_other(params, book, ap, count);

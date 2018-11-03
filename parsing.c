@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 20:11:29 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 19:22:06 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/02 20:16:00 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ static char		*type_parsing(char *fmt, t_params *params)
 {
 	if (*fmt == 'd' || *fmt == 'i')
 		set_params(PW0, &params->type);
-	else if (*fmt == 'u' || *fmt == 'U' || *fmt == 'D')
+	else if (*fmt == 'u' || *fmt == 'D')
 		set_params(PW1, &params->type);
+	else if (*fmt == 'U')
+		set_params(PW6, &params->flags);
 	else if (*fmt == 'o' || *fmt == 'O')
 		set_params(PW2, &params->type);
 	else if (*fmt == 'x')
