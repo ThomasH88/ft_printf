@@ -6,7 +6,7 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/30 20:11:29 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 20:39:13 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/04 20:48:17 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char			*parsing(char *fmt, t_params *params, t_book *book)
 	if (*fmt && *fmt != '.')
 		book->width = ft_atoi(fmt);
 	while (*fmt && ft_isdigit(*fmt))
-	   fmt++;
+		fmt++;
 	if (*fmt && *fmt == '.' && fmt++)
 	{
 		set_params(PW5, &params->flags);
@@ -101,7 +101,7 @@ char			*parsing(char *fmt, t_params *params, t_book *book)
 		book->prec = ft_atoi(fmt);
 	}
 	while (*fmt && ft_isdigit(*fmt))
-	   fmt++;
+		fmt++;
 	fmt = lmod_parsing(fmt, params);
 	fmt = type_parsing(fmt, params);
 	if (param_is_on(PW2, &params->flags))

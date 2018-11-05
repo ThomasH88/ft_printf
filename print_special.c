@@ -6,13 +6,14 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/02 08:05:24 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 21:06:27 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/04 20:51:05 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		print_special_str(t_params *params, t_book *book, va_list ap, int *count)
+void		print_special_str(t_params *params, t_book *book,
+							va_list ap, int *count)
 {
 	char	*str;
 	size_t	len;

@@ -6,13 +6,13 @@
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/01 20:34:43 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/11/02 20:49:18 by tholzheu         ###   ########.fr       */
+/*   Updated: 2018/11/04 20:40:12 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
 	int		ans;
 	int		sign;
@@ -34,7 +34,7 @@ int		ft_atoi(const char *str)
 	return (sign * ans);
 }
 
-int		ft_isdigit(int c)
+int			ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
@@ -77,7 +77,7 @@ char		*strdup_wchar(wchar_t *s1, size_t *len)
 	return (new);
 }
 
-char	*ft_strdup(const char *s1)
+char		*ft_strdup(const char *s1)
 {
 	char	*new;
 	int		i;
