@@ -6,7 +6,7 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2019/05/18 19:51:50 by tholzheu         ###   ########.fr        #
+#    Updated: 2019/05/18 19:54:42 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ NAME = libftprintf.a
 
 IDIR = includes
 
-HEADERS = $(addprefix includes/, ft_printf.h)
+HEADERS = $(addprefix $(IDIR)/, ft_printf.h)
 
 CC = gcc
 
