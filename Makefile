@@ -6,14 +6,14 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2019/05/18 19:43:10 by tholzheu         ###   ########.fr        #
+#    Updated: 2019/05/18 19:51:50 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-GREEN=\033[0;32m
-RED=\033[1;32m
-YELLOW=\033[1;33m
-NC=\033[0m # No Color
+GREEN = \033[0;32m
+RED = \033[1;32m
+YELLOW = \033[1;33m
+NC = \033[0m # No Color
 
 NAME = libftprintf.a
 
