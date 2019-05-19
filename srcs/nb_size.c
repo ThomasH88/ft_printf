@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   nb_size.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/10/30 20:16:38 by tholzheu          #+#    #+#             */
-/*   Updated: 2018/10/31 19:49:32 by tholzheu         ###   ########.fr       */
+/*   Created: 2018/11/01 15:47:41 by tholzheu          #+#    #+#             */
+/*   Updated: 2019/05/16 19:38:28 by tholzheu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int		init_structs(t_params **params, t_book **book, int reset)
+size_t		signed_nb_size(long long nb)
 {
-	if (reset == 0)
+	size_t		count;
+
+	count = 1;
+	if (nb == LLONG_MIN)
+		return (19);
+	if (nb < 0)
+		nb = -nb;
+	while (nb >= 10)
 	{
-		if (!(*params = (t_params *)malloc(sizeof(t_params))))
-			return (-1);
-		if (!(*book = (t_book *)malloc(sizeof(t_book))))
-			return (-1);
+		nb /= 10;
+		count++;
 	}
-	(*params)->flags = 0;
-	(*params)->lmod = 0;
-	(*params)->type = 0;
-	(*book)->width = 0;
-	(*book)->prec = 0;
-	return (0);
+	return (count);
+}
+
+size_t		unsigned_nb_size(unsigned long long nb, unsigned long long base)
+{
+	size_t		count;
+
+	count = 1;
+	while (nb >= base)
+	{
+		nb /= base;
+		count++;
+	}
+	return (count);
 }

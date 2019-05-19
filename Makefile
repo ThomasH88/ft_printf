@@ -6,56 +6,61 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2018/11/02 08:13:57 by tholzheu         ###   ########.fr        #
+#    Updated: 2019/05/18 17:46:39 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+GREEN=\033[0;32m
+RED=\033[1;32m
+YELLOW=\033[1;33m
+NC=\033[0m # No Color
+
 NAME = libftprintf.a
 
-HEADER = ft_printf.h
+IDIR = includes
 
-FLAGS = -Wall -Werror -Wextra -c
+HEADERS = $(addprefix includes/, ft_printf.h)
 
-DEBUG = fsanitize=address -g
+CC = gcc
 
-SRCS = ft_printf.c \
-	   init.c \
-	   nb_size.c \
-	   padding.c \
-	   parsing.c \
-	   print_all_nbs.c \
-	   print_conversion.c \
-	   print_other.c \
-	   print_special.c \
-	   set_params.c \
-	   unsigned_helpers.c \
-	   minilibft.c \
+FLAGS = -Wall -Werror -Wextra -I$(IDIR)
 
-SRCO = $(SRCS:.c=.o)
+ODIR = objs
 
-$(NAME):
-	gcc $(FLAGS) $(SRCS) -I=$(HEADER)
-	ar rcs $(NAME) $(SRCO)
+SDIR = srcs
 
-all: $(NAME) 
+OBJS = $(addprefix $(ODIR)/, ft_printf.o \
+	   init.o \
+	   nb_size.o \
+	   padding.o \
+	   parsing.o \
+	   print_all_nbs.o \
+	   print_conversion.o \
+	   print_other.o \
+	   print_special.o \
+	   set_params.o \
+	   unsigned_helpers.o \
+	   minilibft.o)
 
-run: re
-	gcc main.c print_bits.c $(NAME)
+$(ODIR)/%.o: $(SDIR)/%.c $(HEADERS)
+	@mkdir -p objs
+	@$(CC) -c -o $@ $< $(FLAGS)
 
-san: fclean
-	gcc $(DEBUG) $(SRCS) main.c print_bits.c
+$(NAME): $(OBJS)
+	@echo "$(GREEN)OK -->$(YELLOW) libftprintf$(NC)"
+	@ar rcs $@ $^
+
+all: $(NAME) clean
 
 clean:
-	/bin/rm -f $(SRCO)
+	@echo "$(RED)Cleaning Objects$(NC)"
+	@/bin/rm -f $(OBJS)
+	@/bin/rm -rf objs
 
 fclean: clean
-	/bin/rm -rf $(NAME) *.out* *.dSYM
+	@echo "$(RED)Cleaning executables$(NC)"
+	@/bin/rm -rf $(NAME) *.out* *.dSYM
 
 re: fclean all
 
-git: fclean
-	git add .
-	git reset HEAD *main*
-	git status
-	git commit -m "update"
-	git push
+.PHONY: all clean fclean re
