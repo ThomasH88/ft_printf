@@ -6,14 +6,17 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2019/05/18 19:54:42 by tholzheu         ###   ########.fr        #
+#    Updated: 2019/05/18 20:56:33 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 GREEN = \033[0;32m
 RED = \033[1;32m
 YELLOW = \033[1;33m
-NC = \033[0m # No Color
+ORANGE = \033[1;31m
+BLUE = \033[1;36m
+GREY = \033[1;30m
+NC = \033[0m
 
 NAME = libftprintf.a
 
@@ -43,22 +46,23 @@ OBJS = $(addprefix $(ODIR)/, ft_printf.o \
 	   minilibft.o)
 
 $(ODIR)/%.o: $(SDIR)/%.c $(HEADERS)
+	@echo "$(ORANGE)Compiling $(NC)($(YELLOW)$(NAME)$(NC)) > $(BLUE)$<$(NC)"
 	@mkdir -p objs
 	@$(CC) -c -o $@ $< $(FLAGS)
 
 $(NAME): $(OBJS)
-	@echo "$(GREEN)OK -->$(YELLOW) libftprintf$(NC)"
 	@ar rcs $@ $^
+	@echo "$(GREEN)OK -->$(YELLOW) $(NAME)$(NC)"
 
 all: $(NAME)
 
 clean:
-	@echo "$(RED)Cleaning Objects$(NC)"
+	@echo "$(GREY)Cleaning $(RED)Objects$(NC)"
 	@/bin/rm -f $(OBJS)
 	@/bin/rm -rf objs
 
 fclean: clean
-	@echo "$(RED)Cleaning executables$(NC)"
+	@echo "$(GREY)Cleaning $(RED)Executables$(NC)"
 	@/bin/rm -rf $(NAME) *.out* *.dSYM
 
 re: fclean all
