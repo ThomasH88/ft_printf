@@ -6,7 +6,7 @@
 #    By: tholzheu <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 16:42:11 by tholzheu          #+#    #+#              #
-#    Updated: 2019/05/18 17:46:39 by tholzheu         ###   ########.fr        #
+#    Updated: 2019/05/18 19:43:10 by tholzheu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ $(NAME): $(OBJS)
 	@echo "$(GREEN)OK -->$(YELLOW) libftprintf$(NC)"
 	@ar rcs $@ $^
 
-all: $(NAME) clean
+all: $(NAME)
 
 clean:
 	@echo "$(RED)Cleaning Objects$(NC)"
